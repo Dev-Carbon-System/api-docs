@@ -1,0 +1,1239 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "",
+        "title": "standard public schema",
+        "version": "12.0.2 (a4e00ff)"
+    },
+    "host": "api.carbonanalytics.com:443",
+    "basePath": "/",
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json",
+        "application/vnd.pgrst.object+json;nulls=stripped",
+        "application/vnd.pgrst.object+json",
+        "text/csv"
+    ],
+    "produces": [
+        "application/json",
+        "application/vnd.pgrst.object+json;nulls=stripped",
+        "application/vnd.pgrst.object+json",
+        "text/csv"
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "produces": [
+                    "application/openapi+json",
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "summary": "OpenAPI description (this document)",
+                "tags": [
+                    "Introspection"
+                ]
+            }
+        },
+        "/rpc/build_drop_down": {
+            "get": {
+                "parameters": [
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "p_dropdown_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "p_account_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "text",
+                        "in": "query",
+                        "name": "p_search_text",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "format": "integer",
+                        "in": "query",
+                        "name": "p_limit",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "format": "integer",
+                        "in": "query",
+                        "name": "p_offset",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "format": "timestamp without time zone",
+                        "in": "query",
+                        "name": "p_date_time",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "format": "jsonb",
+                        "in": "query",
+                        "name": "p_parent_answers",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) build_drop_down"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "p_account_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                },
+                                "p_date_time": {
+                                    "format": "timestamp without time zone",
+                                    "type": "string"
+                                },
+                                "p_dropdown_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                },
+                                "p_limit": {
+                                    "format": "integer",
+                                    "type": "integer"
+                                },
+                                "p_offset": {
+                                    "format": "integer",
+                                    "type": "integer"
+                                },
+                                "p_parent_answers": {
+                                    "format": "jsonb"
+                                },
+                                "p_search_text": {
+                                    "format": "text",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "p_dropdown_id",
+                                "p_account_id"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) build_drop_down"
+                ]
+            }
+        },
+        "/rpc/get_personal_account": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_personal_account"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_personal_account"
+                ]
+            }
+        },
+        "/rpc/get_answers": {
+            "get": {
+                "parameters": [
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "p_account_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "p_question_list_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "timestamp with time zone",
+                        "in": "query",
+                        "name": "p_date_time",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "p_question_emission_category_id",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_answers"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "p_account_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                },
+                                "p_date_time": {
+                                    "format": "timestamp with time zone",
+                                    "type": "string"
+                                },
+                                "p_question_emission_category_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                },
+                                "p_question_list_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "p_account_id",
+                                "p_question_list_id",
+                                "p_date_time"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_answers"
+                ]
+            }
+        },
+        "/rpc/get_accounts": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_accounts"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_accounts"
+                ]
+            }
+        },
+        "/rpc/get_question_table": {
+            "get": {
+                "parameters": [
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "p_question_table_id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_question_table"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "p_question_table_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "p_question_table_id"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_question_table"
+                ]
+            }
+        },
+        "/rpc/get_account_by_slug": {
+            "get": {
+                "parameters": [
+                    {
+                        "format": "text",
+                        "in": "query",
+                        "name": "slug",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_account_by_slug"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "slug": {
+                                    "format": "text",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "slug"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_account_by_slug"
+                ]
+            }
+        },
+        "/rpc/get_total_emission_by_scope": {
+            "get": {
+                "parameters": [
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "account_id_param",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "timestamp with time zone",
+                        "in": "query",
+                        "name": "reporting_period_param",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_total_emission_by_scope"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "account_id_param": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                },
+                                "reporting_period_param": {
+                                    "format": "timestamp with time zone",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "account_id_param",
+                                "reporting_period_param"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_total_emission_by_scope"
+                ]
+            }
+        },
+        "/rpc/current_user_account_role": {
+            "get": {
+                "parameters": [
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "account_id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) current_user_account_role"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "account_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "account_id"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) current_user_account_role"
+                ]
+            }
+        },
+        "/rpc/get_account": {
+            "get": {
+                "parameters": [
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "account_id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_account"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "account_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "account_id"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_account"
+                ]
+            }
+        },
+        "/rpc/get_total_table_emissions": {
+            "get": {
+                "parameters": [
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "account_id_param",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "table_id_param",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "timestamp with time zone",
+                        "in": "query",
+                        "name": "reporting_period_param",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_total_table_emissions"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "account_id_param": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                },
+                                "reporting_period_param": {
+                                    "format": "timestamp with time zone",
+                                    "type": "string"
+                                },
+                                "table_id_param": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "account_id_param",
+                                "table_id_param",
+                                "reporting_period_param"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_total_table_emissions"
+                ]
+            }
+        },
+        "/rpc/get_table_answers_with_parent": {
+            "get": {
+                "parameters": [
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "p_account_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "timestamp with time zone",
+                        "in": "query",
+                        "name": "p_date_time",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "p_question_table_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "p_question_table_row_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "boolean",
+                        "in": "query",
+                        "name": "p_no_parent",
+                        "required": true,
+                        "type": "boolean"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_table_answers_with_parent"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "p_account_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                },
+                                "p_date_time": {
+                                    "format": "timestamp with time zone",
+                                    "type": "string"
+                                },
+                                "p_no_parent": {
+                                    "format": "boolean",
+                                    "type": "boolean"
+                                },
+                                "p_question_table_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                },
+                                "p_question_table_row_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "p_account_id",
+                                "p_date_time",
+                                "p_question_table_id",
+                                "p_question_table_row_id",
+                                "p_no_parent"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_table_answers_with_parent"
+                ]
+            }
+        },
+        "/rpc/emission_amounts": {
+            "get": {
+                "parameters": [
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "p_factor_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "jsonb",
+                        "in": "query",
+                        "name": "p_calculation",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "jsonb",
+                        "in": "query",
+                        "name": "p_operands",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) emission_amounts"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "p_calculation": {
+                                    "format": "jsonb"
+                                },
+                                "p_factor_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                },
+                                "p_operands": {
+                                    "format": "jsonb"
+                                }
+                            },
+                            "required": [
+                                "p_factor_id",
+                                "p_calculation",
+                                "p_operands"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) emission_amounts"
+                ]
+            }
+        },
+        "/rpc/get_table_answers": {
+            "get": {
+                "parameters": [
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "p_account_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "timestamp with time zone",
+                        "in": "query",
+                        "name": "p_date_time",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "p_question_table_id",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "summary": "This allows you to get data from tables",
+                "tags": [
+                    "(rpc) get_table_answers"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "description": "This allows you to get data from tables",
+                            "properties": {
+                                "p_account_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                },
+                                "p_date_time": {
+                                    "format": "timestamp with time zone",
+                                    "type": "string"
+                                },
+                                "p_question_table_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "p_account_id",
+                                "p_date_time"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "summary": "This allows you to get data from tables",
+                "tags": [
+                    "(rpc) get_table_answers"
+                ]
+            }
+        },
+        "/rpc/get_total_question_emission_category_emissions": {
+            "get": {
+                "parameters": [
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "account_id_param",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "p_question_emission_category_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "timestamp with time zone",
+                        "in": "query",
+                        "name": "reporting_period_param",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_total_question_emission_category_emissions"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "account_id_param": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                },
+                                "p_question_emission_category_id": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                },
+                                "reporting_period_param": {
+                                    "format": "timestamp with time zone",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "account_id_param",
+                                "p_question_emission_category_id",
+                                "reporting_period_param"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_total_question_emission_category_emissions"
+                ]
+            }
+        },
+        "/rpc/get_total_emissions": {
+            "get": {
+                "parameters": [
+                    {
+                        "format": "uuid",
+                        "in": "query",
+                        "name": "account_id_param",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "format": "timestamp with time zone",
+                        "in": "query",
+                        "name": "reporting_period_param",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_total_emissions"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "account_id_param": {
+                                    "format": "uuid",
+                                    "type": "string"
+                                },
+                                "reporting_period_param": {
+                                    "format": "timestamp with time zone",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "account_id_param",
+                                "reporting_period_param"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "$ref": "#/parameters/preferParams"
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "application/vnd.pgrst.object+json;nulls=stripped",
+                    "application/vnd.pgrst.object+json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "(rpc) get_total_emissions"
+                ]
+            }
+        }
+    },
+    "definitions": {},
+    "parameters": {
+        "preferParams": {
+            "name": "Prefer",
+            "description": "Preference",
+            "required": false,
+            "enum": [
+                "params=single-object"
+            ],
+            "in": "header",
+            "type": "string"
+        }
+    },
+    "externalDocs": {
+        "description": "PostgREST Documentation",
+        "url": "https://postgrest.org/en/v12.0/api.html"
+    }
+}
